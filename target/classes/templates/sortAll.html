@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sort All Algorithms</title>
+
+    <link href="image/shortcut.png" rel="shortcut icon" />
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+<h1>Comparison Sorting Algorithms</h1>
+
+<!-- Form inputs and submit button -->
+<form action="/sortAllArr" method="post" class="form-container-2">
+    <h2>Input:</h2>
+    <input type="number" id="numb" name="numb" class="center-input" required placeholder="Array Size" step="1000">
+    <input type="number" id="bound" name="bound" class="center-input" required placeholder="Bound" step="1000">
+    <br>
+    <h2>Select Array Type:</h2>
+        <label for="selectAllArrayTypes">Select All Array Type
+            <input type="checkbox" id="selectAllArrayTypes" onclick="toggleArrayTypes()">
+        </label>
+        <label for="ReverseSortedArray">Reverse Sorted
+            <input type="checkbox" id="ReverseSortedArray" name="arrayType" value="ReverseSortedArray">
+        </label>
+        <label for="NearlySortedArray">Nearly Sorted
+            <input type="checkbox" id="NearlySortedArray" name="arrayType" value="NearlySortedArray">
+        </label>
+        <label for="FewUniqueArray">Few Unique
+            <input type="checkbox" id="FewUniqueArray" name="arrayType" value="FewUniqueArray">
+        </label>
+        <label for="RandomArray">Random
+            <input type="checkbox" id="RandomArray" name="arrayType" value="RandomArray">
+        </label>
+    <br>
+    <h2>Select Algorithms:</h2>
+    <span class="cb-div">
+        <label for="bubbleSort">Bubble Sort 1
+            <input type="checkbox" id="bubbleSort" name="algorithms" value="bubbleSort">
+        </label>
+    </span>
+    <span class="cb-div">
+        <label for="InsertionSort">Insertion Sort 1
+            <input type="checkbox" id="InsertionSort" name="algorithms" value="InsertionSort">
+        </label>
+    </span>
+    <span class="cb-div">
+        <label for="mergeSort">Merge Sort
+            <input type="checkbox" id="mergeSort" name="algorithms" value="mergeSort">
+        </label>
+    </span>
+    <span class="cb-div">
+        <label for="bubbleSort2">Bubble Sort 2
+            <input type="checkbox" id="bubbleSort2" name="algorithms" value="bubbleSort2">
+        </label>
+    </span>
+    <span class="cb-div">
+        <label for="InsertionSort2">Insertion Sort 2
+            <input type="checkbox" id="InsertionSort2" name="algorithms" value="InsertionSort2">
+        </label>
+    </span>
+    <span class="cb-div">
+        <label for="heapSort">Heap Sort
+            <input type="checkbox" id="heapSort" name="algorithms" value="heapSort">
+        </label>
+    </span>
+    <span class="cb-div">
+        <label for="SelectionSort">Selection Sort 1
+            <input type="checkbox" id="SelectionSort" name="algorithms" value="SelectionSort">
+        </label>
+    </span>
+    <span class="cb-div">
+        <label for="quickSort">Quick Sort 1
+            <input type="checkbox" id="quickSort" name="algorithms" value="quickSort">
+        </label>
+    </span>
+    <span class="cb-div">
+        <label for="countingSort">Counting Sort
+            <input type="checkbox" id="countingSort" name="algorithms" value="countingSort">
+        </label>
+    </span>
+    <span class="cb-div">
+        <label for="SelectionSort2">Selection Sort 2
+            <input type="checkbox" id="SelectionSort2" name="algorithms" value="SelectionSort2">
+        </label>
+    </span>
+    <span class="cb-div">
+        <label for="quickSort2">Quick Sort 2
+            <input type="checkbox" id="quickSort2" name="algorithms" value="quickSort2">
+        </label>
+    </span>
+    <span class="cb-div">
+        <label for="RadixSort">Radix Sort
+            <input type="checkbox" id="RadixSort" name="algorithms" value="RadixSort">
+        </label>
+    </span>
+    <div style="clear:both">
+    </div>
+    <br>
+    <label>
+        <input type="checkbox" id="selectLowAlgorithms" onclick="toggleAlgorithms1()"> Select Low-end Algorithms
+    </label>
+    <label>
+        <input type="checkbox" id="selectHighAlgorithms" onclick="toggleAlgorithms2()"> Select High-end Algorithms
+    </label>
+    <label>
+        <input type="checkbox" id="selectAllAlgorithms" onclick="toggleAlgorithms()"> Select All
+    </label>
+    <br><br>
+    <button id="submitBtn" type="submit">Compare</button>
+    <script src="/js/index.js"></script>
+</form>
+
+<br>
+<div class="info-section">
+    <h2>Array Size: <span th:text="${numb}"></span> numbers</h2>
+    <h2>Bound: <span th:text="${bound}"></span></h2>
+<!--    <h2>Array Type: <span th:text="${arrayType}"></span></h2>-->
+</div>
+
+<!-- Display sorted arrays and algorithm times -->
+<div id="showup" class="compare-sections">
+    <table>
+        <tr th:each="arrayEntry : ${algorithmTimes}">
+            <td colspan="3">
+                <table>
+                    <tr>
+                        <th colspan="3">Array Type: <span th:text="${arrayEntry.key}"></span></th>
+                    </tr>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Algorithm</th>
+                        <th>Time (milliseconds)</th>
+                        <img src="image/line2.png">
+                    </tr>
+                    <tr th:each="entry, iterStat : ${arrayEntry.value}">
+                        <td th:text="${iterStat.count}"></td>
+                        <td th:text="${entry.key}"></td>
+                        <td th:text="${entry.value}"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<br>
+<form action="/" method="get">
+    <button type="submit" class="btn">Back</button>
+</form>
+<br>
+<form action="/Visualize" method="get">
+    <button type="submit" class="btn">View Visualize</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Comparison Sorting Algorithms</title>
+    <link href="image/shortcut.png" rel="shortcut icon" />
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+<h1>Comparison Sorting Algorithms</h1>
+
+<form id="myForm" action="/compare" method="post" class="form-container">
+    <h2>Input:</h2>
+    <input type="number" id="numb" name="numb" class="center-input" required placeholder="Array Size" step="1000">
+    <input type="number" id="bound" name="bound" class="center-input" required placeholder="Bound" step="1000">
+    <br></br>
+    <label for="arrayType">Array Type:</label>
+    <select id="arrayType" name="arrayType" class="center-input">
+        <!-- Options for arrayType -->
+        <option value="ReverseSortedArray">Reverse Sorted</option>
+        <option value="NearlySortedArray">Nearly Sorted</option>
+        <option value="FewUniqueArray">Few Unique</option>
+        <option value="RandomArray">Random</option>
+    </select>
+    <br></br>
+    <label for="algorithm1">Algorithm 1:</label>
+    <select id="algorithm1" name="algorithm1" class="center-input">
+        <!-- Options for Algorithm 1 -->
+        <option value="bubbleSort">Bubble Sort</option>
+        <option value="bubbleSort2">Bubble Sort 2</option>
+        <option value="SelectionSort">Selection Sort</option>
+        <option value="SelectionSort2">Selection Sort 2</option>
+        <option value="InsertionSort">Insertion Sort</option>
+        <option value="InsertionSort2">Insertion Sort 2</option>
+        <option value="quickSort">Quick Sort</option>
+        <option value="quickSort2">Quick Sort 2</option>
+        <option value="mergeSort">Merge Sort</option>
+        <option value="countingSort">Counting Sort</option>
+        <option value="RadixSort">Radix Sort</option>
+        <option value="heapSort">Heap Sort</option>
+        <!-- Add more sorting algorithms as options -->
+    </select>
+    <br>
+    <label for="algorithm2">Algorithm 2:</label>
+    <select id="algorithm2" name="algorithm2" class="center-input">
+        <option value="bubbleSort">Bubble Sort</option>
+        <option value="bubbleSort2">Bubble Sort 2</option>
+        <option value="SelectionSort">Selection Sort</option>
+        <option value="SelectionSort2">Selection Sort 2</option>
+        <option value="InsertionSort">Insertion Sort</option>
+        <option value="InsertionSort2">Insertion Sort 2</option>
+        <option value="quickSort">Quick Sort</option>
+        <option value="quickSort2">Quick Sort 2</option>
+        <option value="mergeSort">Merge Sort</option>
+        <option value="countingSort">Counting Sort</option>
+        <option value="RadixSort">Radix Sort</option>
+        <option value="heapSort">Heap Sort</option>
+        <!-- Options for Algorithm 2 -->
+    </select>
+    <br></br>
+    <button type="submit" id="submitBtn">Compare</button>
+</form>
+<br>
+<form action="/sortAll" method="get">
+    <button type="submit" class="btn">Or sort with many Algorithms</button>
+</form>
+
+<br>
+<div class="info-section">
+    <h2>Array Size: <span th:text="${numb}"></span> numbers</h2>
+    <h2>Bound: <span th:text="${bound}"></span></h2>
+    <h2>Array Type: <span th:text="${arrayType}"></span></h2>
+</div>
+
+<script src="/js/index.js"></script>
+
+<!--<script>-->
+<!--    // Receive the array data from the model attribute-->
+<!--    var arrayData = /*[[${array}]]*/ '';-->
+
+<!--    // Parse the JSON string to get the array-->
+<!--    var array = JSON.parse(arrayData);-->
+
+<!--    // Use the received array for visualization-->
+<!--    // ... Your existing JavaScript code here ...-->
+<!--</script>-->
+<!--<div class="container">-->
+<!--    <canvas id="canvas"></canvas>-->
+<!--    <div class="chart-label">Bubble Sort</div>-->
+<!--        <div class="buttons">-->
+<!--            <button id="startButton">Start</button>-->
+<!--            <button id="pauseButton">Pause</button>-->
+<!--            <button id="resetButton">Reset</button>-->
+
+<!--            <script src="/js/chart.js"></script>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div id="showup" class="compare-sections">
+<!--    <div id="showup" class="compare-sections" style="display: none;">-->
+    <h2>Sorting Algorithm Comparison:</h2>
+    <h3>Algorithm 1: <span th:text="${algorithm1}"></span></h3>
+    <h3>Time: <span th:text="${algorithm1Time}"></span> milliseconds</h3>
+    <h3>Algorithm 2: <span th:text="${algorithm2}"></span></h3>
+    <h3>Time: <span th:text="${algorithm2Time}"></span> milliseconds</h3>
+    <h3>Winner: <span th:text="${winner}"></span></h3>
+</div>
+
+</body>
+</html>

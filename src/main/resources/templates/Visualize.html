@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Visualize</title>
+    <link href="image/shortcut.png" rel="shortcut icon" />
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<img id="gifImage" src="https://2.bp.blogspot.com/-OKNrbr-PdVU/WKhF-eMaOVI/AAAAAAAAH84/ojxydTZwcoEunLKs7DjNVVyVt1BFdImDACLcB/s1600/animation%2Bof%2Bsorting%2Balgorithms.jpg" alt="GIF Image">
+<br>
+<button class="btn" id="toggleButton" onclick="toggleGif()">GIF</button>
+<script>
+    var gifImage = document.getElementById("gifImage");
+    var originalSrc = gifImage.src;
+    var staticSrc = "https://2.bp.blogspot.com/-OKNrbr-PdVU/WKhF-eMaOVI/AAAAAAAAH84/ojxydTZwcoEunLKs7DjNVVyVt1BFdImDACLcB/s1600/animation%2Bof%2Bsorting%2Balgorithms.jpg";
+
+    function toggleGif() {
+        if (gifImage.src === originalSrc) {
+            gifImage.src = staticSrc; // Thay đổi thành ảnh tĩnh
+        } else {
+            gifImage.src = originalSrc; // Chuyển lại đường dẫn ảnh GIF ban đầu
+        }
+    }
+</script>
+<br></br>
+<form action="/" method="get">
+    <button type="submit" class="btn">Back</button>
+</form>
+</body>
+</html>
